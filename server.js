@@ -43,22 +43,22 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors())
 
 const createColllection = (collectionName) => {
-    client.connect();
-    projectCollection = client.db().createCollection(collectionName);
+    // client.connect();
+    // projectCollection = client.db().createCollection(collectionName);
 
-//    client.connect((err,db) => {
-//        console.log('Start creating projectColletion')
-//      projectCollection = client.db().createCollection(collectionName);
-//        console.log('Start MongoDB client')
-//      if(!err) {
-//            console.log('MongoDB Connected')
-//        }
-//        else {
-//            console.log("DB Error: ", err);
-//            process.exit(1);
-//        }
-//      console.log('Finish MongoDB client')
-//    })
+   client.connect((err,db) => {
+       console.log('Start creating projectColletion')
+     projectCollection = client.db().createCollection(collectionName);
+       console.log('Start MongoDB client')
+     if(!err) {
+           console.log('MongoDB Connected')
+       }
+       else {
+           console.log("DB Error: ", err);
+           process.exit(1);
+       }
+     console.log('Finish MongoDB client')
+   })
 }
 
 const insertProjects = (project,callback) => {
