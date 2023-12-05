@@ -1,5 +1,5 @@
 {
-  "name": "sit725-2023-t2-prac3",
+  "name": "sit725-2023-t2-prac4",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RongDu7/sit725-2023-t2-prac3.git"
+    "url": "git+https://github.com/RongDu7/sit725-2023-t2-prac4.git"
   },
   "keywords": [
     "Nodejs",
@@ -22,9 +22,9 @@
   "author": "Rong Du",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/RongDu7/sit725-2023-t2-prac3/issues"
+    "url": "https://github.com/RongDu7/sit725-2023-t2-prac4/issues"
   },
-  "homepage": "https://github.com/RongDu7/sit725-2023-t2-prac3#readme",
+  "homepage": "https://github.com/RongDu7/sit725-2023-t2-prac4#readme",
   "dependencies": {
     "express": "^4.18.2"
   }
