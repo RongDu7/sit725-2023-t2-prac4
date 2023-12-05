@@ -2,39 +2,12 @@ require('dotenv').config()
 var express = require("express")
 var app = express()
 var cors = require("cors")
-
+const MongoClient = require('mongodb').MongoClient;
 let projectCollection;
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+// Database Connection
 const uri = "mongodb+srv://doridu077:oQNuFuBZBjfmJvA7@sit725-2023-t2-prac4.1shdhdg.mongodb.net/?retryWrites=true&w=majority"
-
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-});
-
-// async function run() {
-//   try {
-//     // Connect the client to the server (optional starting in v4.7)
-//     await client.connect();
-//     // Send a ping to confirm a successful connection
-//     await client.db("admin").command({ ping: 1 });
-//     console.log("Pinged your deployment. You successfully connected to MongoDB!");
-    
-//     // client.db("admin").collection("pets");  
-    
-//     //client.db().createCollection('userlist')
-//     console.log("projectCollection created!")
-
-//   } finally {
-//     // Ensures that the client will close when you finish/error
-//     //await client.close();
-//   }
-// }
-// run().catch(console.dir);
+const client = new MongoClient(uri,{ useNewUrlParser: true })
 
 
 app.use(express.static(__dirname+'/public'))
@@ -43,22 +16,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors())
 
 const createColllection = (collectionName) => {
-    client.connect();
-    projectCollection = client.db().collection(collectionName);
-
-   // client.connect((err,db) => {
-   //     console.log('Start creating projectColletion')
-   //   projectCollection = client.db().collection(collectionName);
-   //     console.log('Start MongoDB client')
-   //   if(!err) {
-   //         console.log('MongoDB Connected')
-   //     }
-   //     else {
-   //         console.log("DB Error: ", err);
-   //         process.exit(1);
-   //     }
-   //   console.log('Finish MongoDB client')
-   // })
+    client.connect((err,db) => {
+        projectCollection = client.db().collection(collectionName);
+        if(!err) {
+            console.log('MongoDB Connected')
+        }
+        else {
+            console.log("DB Error: ", err);
+            process.exit(1);
+        }
+    })
 }
 
 const insertProjects = (project,callback) => {
