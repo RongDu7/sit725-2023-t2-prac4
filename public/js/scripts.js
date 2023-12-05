@@ -47,6 +47,19 @@ $(document).ready(function(){
     $('#formSubmit').click(()=>{
         submitForm();
     })
-    addCards(cardList);
+    getProjects();
     $('.modal').modal();
   });
+
+
+const getProjects = () => {
+    $.get('/api/projects',(response) => {
+        if(response.statusCode==200){
+            console.log(response)
+            addCards(response.data);
+        }
+        else {
+            console.log(response)
+        }
+    })
+}
