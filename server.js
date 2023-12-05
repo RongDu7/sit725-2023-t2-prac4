@@ -7,7 +7,7 @@ let projectCollection;
 
 // Database Connection
 const uri = "mongodb+srv://doridu077:oQNuFuBZBjfmJvA7@sit725-2023-t2-prac4.1shdhdg.mongodb.net/?retryWrites=true&w=majority"
-const client = new MongoClient(uri,{ useNewUrlParser: true })
+const client = new MongoClient(uri,{ })
 
 
 app.use(express.static(__dirname+'/public'))
