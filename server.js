@@ -48,7 +48,7 @@ const createColllection = (collectionName) => {
 
    client.connect((err,db) => {
        console.log('Start creating projectColletion')
-     projectCollection = client.db().createCollection(collectionName);
+     projectCollection = client.db().collection(collectionName);
        console.log('Start MongoDB client')
      if(!err) {
            console.log('MongoDB Connected')
